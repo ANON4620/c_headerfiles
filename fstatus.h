@@ -8,11 +8,11 @@
 #include <stdlib.h>
 #endif
 
-void chkfstatus(FILE *fp)
+void chkfstatus(FILE *fp, char fname[80])
 {
         if(fp == NULL)
         {
-                puts("Cannot open file");
+                printf("Cannot open file: %s\n", fname);
                 exit(1);
         }
 }
