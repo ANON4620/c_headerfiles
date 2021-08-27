@@ -4,6 +4,9 @@
 #include <stdio.h>
 #endif
 
+// default
+#define DEFAULT "\033[0m"
+
 // normal
 #define BLACK "\033[0;30m"
 #define RED "\033[0;31m"
