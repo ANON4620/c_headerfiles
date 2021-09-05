@@ -9,7 +9,7 @@
 #endif
 
 
-void chkfstatus(FILE *fp, char fname[80])
+void chkfstatus(FILE *fp, long len, char fname[len])
 {
         if(fp == NULL)
         {
@@ -18,15 +18,15 @@ void chkfstatus(FILE *fp, char fname[80])
         }
 }
 
-void chkargs(int argc, int argp)
+void chkargs(int argc, int n)
 {
-        ++argp;
-        if(argc < argp)
+	n++;
+        if(argc < n)
         {
                 puts("Too few arguments.");
                 exit(0);
         }
-        if(argc > argp)
+        if(argc > n)
         {
                 puts("Too many arguments.");
                 exit(0);
