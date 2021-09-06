@@ -6,16 +6,19 @@
 #ifndef _STDLIB_H
 #include <stdlib.h>
 #endif
+#ifndef _STDBOOL_H
+#include <stdbool.h>
+#endif
 #ifndef _STATUS_H
 #include "status.h"
 #endif
 
 typedef char* String;
 
-String strinp(void)
+void strinp(String* str, const bool allocated)
 {
 	FILE *fp = NULL;
-	char ch, *str = NULL;
+	char ch;
 	int len = 1;
 
 	fp = fopen("temp.tmp", "w+");
@@ -29,18 +32,20 @@ String strinp(void)
 		len++;
 	}
 	
-	// allocating memory
-	str = (String) malloc(len * sizeof(char));
+	// allocating heap memory
+	if(!allocated)
+		*str = (String) malloc(len * sizeof(char));
+	else
+		*str = (String) realloc(*str, len * sizeof(char));
+	chkmem(*str);
 	
-	// set pointer to the beginning
+	// set pointer to the beginning of the file
 	fseek(fp, 0, SEEK_SET);
 
 	for(int i = 0; i < len - 1; i++)
-		str[i] = fgetc(fp);
-	str[len - 1] = '\0';
+		*(*str + i) = fgetc(fp);
+	*(*str + (len - 1)) = '\0';
 	fclose(fp);
 
 	remove("temp.tmp");
-
-	return str;
 }
