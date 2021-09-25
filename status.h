@@ -32,3 +32,12 @@ void chkargs(int argc, int n)
                 exit(0);
         }
 }
+
+void chkmem(void *address)
+{
+	if(address == NULL)
+	{
+		puts("Out of memory!");
+		exit(0);
+	}
+}
