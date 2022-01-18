@@ -1,3 +1,4 @@
+#ifndef GETDATA_H
 #define GETDATA_H
 
 #include <stdio.h>
@@ -80,3 +81,5 @@ float getfloat(void)
         // eg:- 57 + 0.27 = 57.27
         return(in + dec);
 }
+
+#endif
