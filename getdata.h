@@ -1,11 +1,7 @@
 #define GETDATA_H
 
-#ifndef _STDIO_H
 #include <stdio.h>
-#endif
-#ifndef _MATH_H
 #include <math.h>
-#endif
 
 int getint(void)
 {
