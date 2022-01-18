@@ -1,4 +1,4 @@
-#define _READLINE_H
+#define READLINE_H
 
 #ifndef _STDIO_H
 #include <stdio.h>
@@ -12,7 +12,7 @@
 #ifndef _STDBOOL_H
 #include <stdbool.h>
 #endif
-#ifndef _STATUS_H
+#ifndef STATUS_H
 #include "status.h"
 #endif
 
