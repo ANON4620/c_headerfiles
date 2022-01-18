@@ -5,30 +5,48 @@
 
 int getint(void)
 {
-    int n, s = 0;
+    int n, s = 0, neg = 0;
+    
     while((n = getchar()) != '\n')
     {
+        // Check for '-' sign
+        if(n == '-' && s == 0)
+            neg = 1;
         if(n >= '0' && n <= '9')
         {
             n = n - '0';
             s = s * 10 + n;
         }
     }
-
-    return(s);
+    
+    // Check for negative number
+    if(neg == 1)
+        return(-s);
+    else
+        return(s);
 }
 
 float getfloat(void)
 {
-    int n, p, in = 0, c = 0;
+    int n, p, in = 0, c = 0, neg = 0;
     float dec = 0.0f;
     
     // Reading integer part
     // eg:- 57
     while((n = getchar()) != '.')
     {
+        // Check for '-' sign
+        if(n == '-' && in == 0)
+            neg = 1;
+            
         if(n == '\n')
-            return(in);
+        {
+            // Check for negative number
+            if(neg == 1)
+                return(-in);
+            else
+                return(in);
+        }
         else if(n >= '0' && n <= '9')
         {
             n = n - '0';
@@ -52,8 +70,14 @@ float getfloat(void)
     // eg:- 27 to 0.27
     p = (int) pow(10, c);
     dec = dec / p;
-    
-    // Return integer part + decimal part
-    // eg:- 57 + 0.27 = 57.27
-    return(in + dec);
+
+    // Check for negative number
+    if(neg == 1)
+        // Return integer part + decimal part
+        // eg:- -57 + -0.27 = -57.27
+        return(-in + -dec);
+    else
+        // Return integer part + decimal part
+        // eg:- 57 + 0.27 = 57.27
+        return(in + dec);
 }
