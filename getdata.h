@@ -20,7 +20,7 @@ int getint(void)
     }
     
     // Check for negative number
-    if(neg == 1)
+    if(neg)
         return(-s);
     else
         return(s);
@@ -28,7 +28,7 @@ int getint(void)
 
 float getfloat(void)
 {
-    int n, p, in = 0, c = 0, neg = 0;
+    int n, in = 0, c = 0, neg = 0;
     float dec = 0.0f;
     
     // Reading integer part
@@ -42,7 +42,7 @@ float getfloat(void)
         if(n == '\n')
         {
             // Check for negative number
-            if(neg == 1)
+            if(neg)
                 return(-in);
             else
                 return(in);
@@ -68,11 +68,11 @@ float getfloat(void)
     
     // Convert decimal part(read as integer) to its decimal value
     // eg:- 27 to 0.27
-    p = (int) pow(10, c);
-    dec = dec / p;
+    for(int i = 1; i <= c; i++)
+    	dec = dec / 10;
 
     // Check for negative number
-    if(neg == 1)
+    if(neg)
         // Return integer part + decimal part
         // eg:- -57 + -0.27 = -57.27
         return(-in + -dec);
