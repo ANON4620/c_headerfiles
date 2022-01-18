@@ -1,7 +1,6 @@
 #define GETDATA_H
 
 #include <stdio.h>
-#include <math.h>
 
 int getint(void)
 {
