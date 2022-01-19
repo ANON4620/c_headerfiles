@@ -7,12 +7,15 @@ int getint(void)
 {
     int n, s = 0, neg = 0;
     
-    while((n = getchar()) != '\n')
+    while( (n = getchar()) )
     {
+	if(n == '\n' || n == ' ')
+		break;
+
         // Check for '-' sign
         if(n == '-' && s == 0)
             neg = 1;
-        if(n >= '0' && n <= '9')
+	else if(n >= '0' && n <= '9')
         {
             n = n - '0';
             s = s * 10 + n;
@@ -33,21 +36,17 @@ float getfloat(void)
     
     // Reading integer part
     // eg:- 57
-    while((n = getchar()) != '.')
+    while( (n = getchar()) != '.' )
     {
+	if(n == '\n' || n == ' ')
+        {
+            // Check for negative number
+            if(neg)                                                        return(-in);                                           else                                                           return(in);                                        }
+
         // Check for '-' sign
         if(n == '-' && in == 0)
             neg = 1;
-            
-        if(n == '\n')
-        {
-            // Check for negative number
-            if(neg)
-                return(-in);
-            else
-                return(in);
-        }
-        else if(n >= '0' && n <= '9')
+	else if(n >= '0' && n <= '9')
         {
             n = n - '0';
             in = in * 10 + n;
@@ -56,8 +55,11 @@ float getfloat(void)
     
     // Reading decimal part as integer
     // eg:- 27
-    while((n = getchar()) != '\n')
+    while( (n = getchar()) )
     {
+	if(n == '\n' || n == ' ')
+                break;
+
         if(n >= '0' && n <= '9')
         {
             n = n - '0';
