@@ -41,7 +41,11 @@ float getfloat(void)
 	if(n == '\n' || n == ' ')
         {
             // Check for negative number
-            if(neg)                                                        return(-in);                                           else                                                           return(in);                                        }
+            if(neg)
+		return(-in);
+	    else
+		return(in);
+	}
 
         // Check for '-' sign
         if(n == '-' && in == 0)
