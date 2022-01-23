@@ -2,7 +2,8 @@
 
 int getint(void)
 {
-    int n, s = 0, neg = 0;
+    int n, s = 0;
+    _Bool neg = 0;
 
     while( (n = getchar()) )
     {
@@ -27,8 +28,9 @@ int getint(void)
 
 float getfloat(void)
 {
-    int n, in = 0, c = 0, neg = 0;
+    int n, in = 0, c = 0;
     float dec = 0.0f;
+    _Bool neg = 0;
 
     // Reading integer part
     // eg:- 57
